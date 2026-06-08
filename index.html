@@ -1,0 +1,1665 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>こまつどんどん祭り 公式サイト | 小松の夜が、熱狂のステージに変貌する</title>
+    
+    <!-- Google Fonts & Font Awesome -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,800;0,900;1,800&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        /* -----------------------------------------
+           1. リセット & ベーススタイル
+        ----------------------------------------- */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --bg-dark: #070b14;
+            --bg-card: #121824;
+            --primary: #ff2a5f;      /* 鮮烈なネオンピンク・レッド */
+            --primary-glow: rgba(255, 42, 95, 0.4);
+            --secondary: #ffaa00;    /* 提灯・松明のゴールドオレンジ */
+            --secondary-glow: rgba(255, 170, 0, 0.3);
+            --accent-cyan: #00f2fe;  /* サイバーペンライトブルー */
+            --text-light: #f1f5f9;
+            --text-muted: #94a3b8;
+            --font-en: 'Montserrat', sans-serif;
+            --font-ja: 'Noto Sans JP', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            font-family: var(--font-ja);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* -----------------------------------------
+           2. 共通レイアウト & セクション
+        ----------------------------------------- */
+        section {
+            padding: 100px 20px;
+            position: relative;
+            width: 100%;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* グラデーション背景装飾 */
+        .glow-bg {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(255, 42, 95, 0.08) 0%, transparent 70%);
+            top: 10%;
+            right: -10%;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .glow-bg-left {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(255, 170, 0, 0.06) 0%, transparent 70%);
+            bottom: 10%;
+            left: -10%;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        /* タイポグラフィ */
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-tag {
+            font-family: var(--font-en);
+            font-size: 14px;
+            font-weight: 800;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .section-title {
+            font-size: 42px;
+            font-weight: 900;
+            letter-spacing: -0.5px;
+            line-height: 1.3;
+        }
+
+        .section-title span {
+            color: var(--primary);
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* ボタン */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px 38px;
+            font-size: 16px;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            cursor: pointer;
+            letter-spacing: 1px;
+            border: none;
+            outline: none;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary) 0%, #d60036 100%);
+            color: white;
+            box-shadow: 0 0 25px var(--primary-glow);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 35px rgba(255, 42, 95, 0.7);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--secondary);
+            color: var(--secondary);
+            transform: translateY(-3px);
+            box-shadow: 0 0 20px var(--secondary-glow);
+        }
+
+        /* -----------------------------------------
+           3. ヘッダーナビゲーション
+        ----------------------------------------- */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: linear-gradient(to bottom, rgba(7, 11, 20, 0.95) 0%, rgba(7, 11, 20, 0) 100%);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .logo {
+            font-family: var(--font-ja);
+            font-weight: 900;
+            font-size: 24px;
+            color: white;
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 35px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 700;
+            transition: color 0.3s;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        /* -----------------------------------------
+           4. ヒーローセクション (カウントダウン付)
+        ----------------------------------------- */
+        /* ヒーロー動画背景 */
+        .hero-video-bg {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%);
+            z-index: -2;
+            object-fit: cover;
+            filter: brightness(0.6);
+        }
+
+        #hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 20px;
+            background: linear-gradient(rgba(7, 11, 20, 0.5), rgba(7, 11, 20, 0.95));
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* ヒーロー背景フォールバック (画像ロード失敗対策) */
+        #hero::before {
+            content: '';
+            position: absolute;
+            top:0; left:0; right:0; bottom:0;
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.1) 0%, rgba(15, 23, 42, 0.8) 100%);
+            z-index: -1;
+        }
+
+        .hero-content {
+            max-width: 950px;
+            animation: fadeInUp 1.2s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-tagline {
+            font-family: var(--font-en);
+            font-size: 16px;
+            font-weight: 900;
+            color: var(--secondary);
+            text-transform: uppercase;
+            letter-spacing: 10px;
+            margin-bottom: 25px;
+            text-shadow: 0 0 15px var(--secondary-glow);
+        }
+
+        .hero-title {
+            font-size: 76px;
+            font-weight: 900;
+            line-height: 1.2;
+            margin-bottom: 30px;
+            letter-spacing: -1px;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.6);
+        }
+
+        .hero-title span {
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-description {
+            font-size: 20px;
+            color: var(--text-muted);
+            max-width: 700px;
+            margin: 0 auto 45px auto;
+            font-weight: 500;
+            line-height: 1.8;
+        }
+
+        /* カウントダウンタイマー */
+        .countdown-container {
+            display: inline-flex;
+            gap: 15px;
+            background: rgba(18, 24, 36, 0.8);
+            padding: 15px 30px;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(8px);
+            margin-bottom: 40px;
+        }
+
+        .countdown-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 60px;
+        }
+
+        .countdown-value {
+            font-family: var(--font-en);
+            font-size: 32px;
+            font-weight: 900;
+            color: var(--secondary);
+        }
+
+        .countdown-label {
+            font-size: 11px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            font-weight: 700;
+            margin-top: 2px;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        /* -----------------------------------------
+           5. コンセプト (2カラム & 動画風プレースホルダー)
+        ----------------------------------------- */
+        #concept {
+            background-color: #0b111e;
+        }
+
+        .split-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .text-side h3 {
+            font-size: 32px;
+            font-weight: 800;
+            margin-bottom: 25px;
+            line-height: 1.4;
+        }
+
+        .text-side p {
+            color: var(--text-muted);
+            font-size: 17px;
+            margin-bottom: 25px;
+            line-height: 1.8;
+        }
+
+        .image-side {
+            position: relative;
+        }
+
+        /* ビデオ・ライブ風フレーム */
+        .video-container {
+            position: relative;
+            width: 100%;
+            height: 430px;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .video-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.85);
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .video-container:hover img {
+            transform: scale(1.04);
+        }
+
+        .play-btn-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary) 0%, #d60036 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 0 30px var(--primary-glow);
+            transition: all 0.3s;
+            z-index: 2;
+        }
+
+        .play-btn-overlay i {
+            color: white;
+            font-size: 26px;
+            margin-left: 5px;
+        }
+
+        .play-btn-overlay:hover {
+            transform: translate(-50%, -50%) scale(1.1);
+            box-shadow: 0 0 40px rgba(255, 42, 95, 0.9);
+        }
+
+        /* ライブストリームバッジ */
+        .live-badge {
+            position: absolute;
+            top: 25px;
+            left: 25px;
+            background: #ef4444;
+            color: white;
+            padding: 6px 14px;
+            border-radius: 30px;
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            z-index: 2;
+        }
+
+        .live-badge::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: white;
+            border-radius: 50%;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.5); opacity: 0.4; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        /* -----------------------------------------
+           6. インタラクティブ：バーチャルペンライト
+        ----------------------------------------- */
+        #penlight-arena {
+            background-color: #070b14;
+            border-top: 1px solid rgba(255, 255, 255, 0.03);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+            text-align: center;
+        }
+
+        .arena-box {
+            background: linear-gradient(180deg, rgba(18, 24, 36, 0.6) 0%, rgba(10, 15, 26, 0.9) 100%);
+            border-radius: 32px;
+            padding: 60px 40px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .light-glow-layer {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(circle at center, rgba(255, 42, 95, 0) 0%, transparent 70%);
+            transition: background 0.5s ease;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .penlight-graphics {
+            height: 180px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            margin-bottom: 40px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .glow-stick {
+            width: 24px;
+            height: 130px;
+            background: #fff;
+            border-radius: 12px 12px 4px 4px;
+            box-shadow: 0 0 40px #ff2a5f;
+            transition: all 0.3s;
+            transform-origin: bottom center;
+            animation: waveStick 2s ease-in-out infinite alternate;
+        }
+
+        .glow-stick-handle {
+            width: 28px;
+            height: 40px;
+            background: #27272a;
+            border-radius: 4px 4px 12px 12px;
+            margin: 0 auto;
+            border: 1px solid #3f3f46;
+        }
+
+        @keyframes waveStick {
+            0% { transform: rotate(-25deg); }
+            100% { transform: rotate(25deg); }
+        }
+
+        .color-selectors {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .color-dot {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 3px solid transparent;
+            transition: all 0.2s;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        .color-dot:hover {
+            transform: scale(1.1);
+        }
+
+        .color-dot.active {
+            border-color: #fff;
+            transform: scale(1.15);
+        }
+
+        /* -----------------------------------------
+           7. 見どころ（グリッドカードレイアウト）
+        ----------------------------------------- */
+        .grid-layout {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .feature-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            border-radius: 24px;
+            padding: 45px 35px;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: transparent;
+            transition: background 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(255, 42, 95, 0.25);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+        }
+
+        .feature-card:hover::before {
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+        }
+
+        .card-icon {
+            width: 65px;
+            height: 65px;
+            background: rgba(255, 42, 95, 0.1);
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+
+        .card-icon i {
+            font-size: 26px;
+            color: var(--primary);
+        }
+
+        .feature-card:nth-child(2) .card-icon {
+            background: rgba(255, 170, 0, 0.1);
+        }
+        .feature-card:nth-child(2) .card-icon i {
+            color: var(--secondary);
+        }
+
+        .feature-card:nth-child(3) .card-icon {
+            background: rgba(0, 242, 254, 0.1);
+        }
+        .feature-card:nth-child(3) .card-icon i {
+            color: var(--accent-cyan);
+        }
+
+        .card-title {
+            font-size: 24px;
+            font-weight: 800;
+            margin-bottom: 15px;
+            letter-spacing: -0.5px;
+        }
+
+        .card-desc {
+            color: var(--text-muted);
+            font-size: 15px;
+            line-height: 1.8;
+        }
+
+        /* -----------------------------------------
+           8. 熱気メーター & 統計 (インタラクティブ)
+        ----------------------------------------- */
+        #stats {
+            background: linear-gradient(rgba(7, 11, 20, 0.88), rgba(7, 11, 20, 0.88)), 
+                        url('images/20251011_191757.JPG') center center/cover;
+            background-attachment: fixed;
+            padding: 120px 20px;
+        }
+
+        .stats-wrapper {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            text-align: center;
+            margin-bottom: 70px;
+        }
+
+        .stat-item .stat-num {
+            font-family: var(--font-en);
+            font-size: 84px;
+            font-weight: 900;
+            line-height: 1;
+            background: linear-gradient(135deg, #ffffff 30%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 12px;
+        }
+
+        .stat-item .stat-label {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--text-muted);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* 熱気連打メーター */
+        .excitement-meter-box {
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(18, 24, 36, 0.7);
+            border-radius: 20px;
+            padding: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(8px);
+            text-align: center;
+        }
+
+        .meter-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .meter-title i {
+            color: var(--primary);
+            animation: heartBeat 1s infinite alternate;
+        }
+
+        @keyframes heartBeat {
+            to { transform: scale(1.2); }
+        }
+
+        .meter-bar-outer {
+            width: 100%;
+            height: 24px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255,255,255,0.1);
+            position: relative;
+        }
+
+        .meter-bar-inner {
+            height: 100%;
+            width: 45%; /* 初期値 */
+            background: linear-gradient(90deg, var(--secondary), var(--primary));
+            border-radius: 12px;
+            transition: width 0.3s ease;
+            box-shadow: 0 0 15px var(--primary-glow);
+        }
+
+        .meter-percentage {
+            font-family: var(--font-en);
+            font-weight: 900;
+            color: #fff;
+            font-size: 14px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-shadow: 0 1px 3px rgba(0,0,0,0.8);
+        }
+
+        /* -----------------------------------------
+           9. タイムテーブル (インタラクティブ・タブ切替)
+        ----------------------------------------- */
+        #schedule {
+            background-color: #0b111e;
+        }
+
+        .tabs-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 45px;
+        }
+
+        .tab-btn {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            color: var(--text-muted);
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .tab-btn:hover {
+            background: rgba(255, 255, 255, 0.08);
+            color: white;
+        }
+
+        .tab-btn.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+            box-shadow: 0 0 20px var(--primary-glow);
+        }
+
+        .timetable-pane {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .timetable-pane.active {
+            display: block;
+        }
+
+        .timetable {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0 15px;
+        }
+
+        .timetable td {
+            padding: 25px 30px;
+            background: var(--bg-card);
+            border-top: 1px solid rgba(255,255,255,0.02);
+            border-bottom: 1px solid rgba(255,255,255,0.02);
+            transition: transform 0.2s;
+        }
+
+        .timetable tr:hover td {
+            transform: scale(1.01);
+            background: #182030;
+        }
+
+        .timetable td:first-child {
+            border-left: 1px solid rgba(255,255,255,0.02);
+            border-top-left-radius: 16px;
+            border-bottom-left-radius: 16px;
+            font-family: var(--font-en);
+            font-weight: 900;
+            color: var(--primary);
+            font-size: 20px;
+            width: 180px;
+            letter-spacing: 0.5px;
+        }
+
+        .timetable td:last-child {
+            border-right: 1px solid rgba(255,255,255,0.02);
+            border-top-right-radius: 16px;
+            border-bottom-right-radius: 16px;
+        }
+
+        .stage-title-item {
+            font-weight: 800;
+            font-size: 19px;
+            margin-bottom: 6px;
+            color: white;
+        }
+
+        .stage-desc-item {
+            color: var(--text-muted);
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        /* -----------------------------------------
+           10. クチコミ & SNSフィード風ギャラリー
+        ----------------------------------------- */
+        #gallery {
+            background-color: #070b14;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .gallery-item {
+            position: relative;
+            height: 280px;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.05);
+            cursor: pointer;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.08);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(to top, rgba(7, 11, 20, 0.9) 0%, rgba(7, 11, 20, 0.2) 100%);
+            opacity: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 20px;
+            transition: opacity 0.3s;
+            z-index: 2;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-text {
+            font-size: 13px;
+            font-weight: 500;
+            line-height: 1.5;
+            color: #f1f5f9;
+        }
+
+        .gallery-user {
+            font-size: 11px;
+            color: var(--secondary);
+            margin-top: 8px;
+            font-weight: 700;
+        }
+
+        /* -----------------------------------------
+           11. フッター・インフォメーション
+        ----------------------------------------- */
+        #cta-block {
+            text-align: center;
+            padding: 130px 20px;
+            background: linear-gradient(180deg, #0b111e 0%, #05080f 100%);
+            border-top: 1px solid rgba(255,42,95,0.08);
+        }
+
+        .cta-box i {
+            font-size: 55px;
+            color: var(--primary);
+            opacity: 0.5;
+            margin-bottom: 35px;
+        }
+
+        .cta-box h2 {
+            font-size: 48px;
+            font-weight: 900;
+            line-height: 1.4;
+            margin-bottom: 45px;
+            letter-spacing: -0.5px;
+        }
+
+        footer {
+            background-color: #04060b;
+            padding: 80px 20px 40px 20px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 50px;
+            margin-bottom: 50px;
+        }
+
+        .footer-info h3 {
+            font-size: 26px;
+            font-weight: 900;
+            margin-bottom: 20px;
+            letter-spacing: 0.5px;
+        }
+
+        .footer-info h3 span {
+            color: var(--primary);
+        }
+
+        .footer-details {
+            list-style: none;
+            color: var(--text-muted);
+            font-size: 15px;
+        }
+
+        .footer-details li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .footer-details i {
+            color: var(--secondary);
+            width: 20px;
+            font-size: 16px;
+        }
+
+        .footer-socials {
+            display: flex;
+            gap: 15px;
+            justify-content: flex-end;
+            align-items: center;
+        }
+
+        .social-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(255,255,255,0.04);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .social-icon:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px var(--primary-glow);
+        }
+
+        .copyright {
+            text-align: center;
+            color: #475569;
+            font-size: 13px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            padding-top: 35px;
+        }
+
+        /* -----------------------------------------
+           12. レスポンシブ対応 (モバイル最適化)
+        ----------------------------------------- */
+        @media (max-width: 1024px) {
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 968px) {
+            header {
+                padding: 15px 25px;
+            }
+            header .nav-links {
+                display: none; /* シンプルにするためモバイルナビは非表示 */
+            }
+            section {
+                padding: 70px 20px;
+            }
+            .split-layout {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+            .grid-layout {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+            .hero-title {
+                font-size: 46px;
+            }
+            .hero-cta {
+                flex-direction: column;
+                align-items: center;
+            }
+            .hero-cta .btn {
+                width: 100%;
+                max-width: 320px;
+            }
+            .stats-wrapper {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            .stat-item .stat-num {
+                font-size: 64px;
+            }
+            .timetable td {
+                display: block;
+                width: 100% !important;
+            }
+            .timetable td:first-child {
+                border-radius: 16px 16px 0 0;
+                padding-bottom: 10px;
+            }
+            .timetable td:last-child {
+                border-radius: 0 0 16px 16px;
+                padding-top: 10px;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 35px;
+            }
+            .footer-socials {
+                justify-content: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ヘッダーナビゲーション -->
+    <header>
+        <a href="#" class="logo">こまつ<span>どんどん</span></a>
+        <ul class="nav-links">
+            <li><a href="#concept">コンセプト</a></li>
+            <li><a href="#penlight-arena">アリーナ体験</a></li>
+            <li><a href="#highlights">見どころ</a></li>
+            <li><a href="#schedule">タイムテーブル</a></li>
+            <li><a href="#gallery">みんなの投稿</a></li>
+            <li><a href="#access">アクセス</a></li>
+        </ul>
+    </header>
+
+    <!-- ヒーローセクション -->
+    <section id="hero">
+        <video class="hero-video-bg" autoplay loop muted playsinline>
+            <source src="images/20251011_193205.mp4" type="video/mp4">
+        </video>
+        <div class="hero-content">
+            <p class="hero-tagline">The Sound of Pure Energy</p>
+            <h1 class="hero-title">こまつ<span>どんどん</span>祭り</h1>
+            <p class="hero-description">
+                光と音が交錯する、小松で最も熱い夏の夜。ステージから溢れる圧倒的なグルーヴと大観衆の熱狂を、全身で体感せよ。
+            </p>
+            
+            <!-- リアルタイムカウントダウン -->
+            <div class="countdown-container">
+                <div class="countdown-item">
+                    <span class="countdown-value" id="days">00</span>
+                    <span class="countdown-label">Days</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-value" id="hours">00</span>
+                    <span class="countdown-label">Hours</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-value" id="minutes">00</span>
+                    <span class="countdown-label">Mins</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-value" id="seconds">00</span>
+                    <span class="countdown-label">Secs</span>
+                </div>
+            </div>
+
+            <div class="hero-cta">
+                <a href="#schedule" class="btn btn-primary"><i class="fa-solid fa-calendar-days" style="margin-right: 8px;"></i>ステージ予定を見る</a>
+                <a href="#penlight-arena" class="btn btn-outline"><i class="fa-solid fa-wand-magic-sparkles" style="margin-right: 8px;"></i>アリーナで楽しむ</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- コンセプトセクション -->
+    <section id="concept">
+        <div class="glow-bg"></div>
+        <div class="container">
+            <div class="split-layout">
+                <div class="text-side">
+                    <span class="section-tag">Live & Energy</span>
+                    <h2 class="section-title">魂を揺さぶる<br><span>圧倒的ライブ感</span></h2>
+                    <p style="margin-top: 25px;">
+                        駅前の特設巨大ステージが、アーティストと観客から放たれる熱気で共振する。ダンス、ライブ、伝統の響き。すべてのパフォーマンスがこの夜、ひとつの大きなうねりとなります。
+                    </p>
+                    <p>
+                        お腹の底に響く重低音のスピーカー、夜空をシャープに切り裂く無数のレーザーライト。ただ観るだけでなく、あなた自身がこの熱狂の渦の一部となる臨場感をお楽しみください。
+                    </p>
+                </div>
+                <div class="image-side">
+                    <!-- ライブ風プレースホルダー動画フレーム -->
+                    <div class="video-container">
+                        <div class="live-badge">LIVE STREAMING</div>
+                        <div class="play-btn-overlay" id="play-btn">
+                            <i class="fa-solid fa-play"></i>
+                        </div>
+                        <img id="concept-img" src="images/20251011_203226.JPG" alt="フェスティバルステージ">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- バーチャルペンライトアリーナ -->
+    <section id="penlight-arena">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Interactive Vibe</span>
+                <h2 class="section-title">バーチャル<span>ペンライトアリーナ</span></h2>
+                <p style="color: var(--text-muted); margin-top: 15px; font-size: 16px;">
+                    ペンライトのカラーを選んで、ステージに向かってタップ＆スワイプしよう！
+                </p>
+            </div>
+
+            <div class="arena-box" id="arena-box">
+                <div class="light-glow-layer" id="glow-layer"></div>
+                
+                <div class="penlight-graphics">
+                    <div>
+                        <div class="glow-stick" id="glow-stick"></div>
+                        <div class="glow-stick-handle"></div>
+                    </div>
+                </div>
+
+                <!-- カラー選択 -->
+                <div class="color-selectors">
+                    <div class="color-dot active" style="background-color: #ff2a5f;" data-color="#ff2a5f" data-name="ネオンピンク"></div>
+                    <div class="color-dot" style="background-color: #ffaa00;" data-color="#ffaa00" data-name="サンゴールド"></div>
+                    <div class="color-dot" style="background-color: #00f2fe;" data-color="#00f2fe" data-name="サイバーブルー"></div>
+                    <div class="color-dot" style="background-color: #39ff14;" data-color="#39ff14" data-name="エナジーグリーン"></div>
+                </div>
+
+                <button class="btn btn-primary" id="wave-button" style="position: relative; z-index: 2;">
+                    <i class="fa-solid fa-hand-sparkles" style="margin-right: 8px;"></i>ペンライトを振る！
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 見どころハイライト -->
+    <section id="highlights">
+        <div class="glow-bg-left"></div>
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Highlights</span>
+                <h2 class="section-title">祭りを極める<span>3つの熱狂</span></h2>
+            </div>
+            
+            <div class="grid-layout">
+                <!-- 見どころ 1 -->
+                <div class="feature-card">
+                    <div class="card-icon"><i class="fa-solid fa-bolt"></i></div>
+                    <h3 class="card-title">MAIN STAGE LIVE</h3>
+                    <p class="card-desc">
+                        地元選りすぐりのダンスクルー、圧巻の和太鼓、そして豪華ゲストアーティストたちがノンストップで繋ぐ、奇跡のステージ。
+                    </p>
+                </div>
+                <!-- 見どころ 2 -->
+                <div class="feature-card">
+                    <div class="card-icon"><i class="fa-solid fa-fire"></i></div>
+                    <h3 class="card-title">ANDON NIGHT</h3>
+                    <p class="card-desc">
+                        伝統の「あんどん行列」が現代のクラブサウンドやライトアップとコラボレーション。幻想的かつエネルギッシュに街を練り歩きます。
+                    </p>
+                </div>
+                <!-- 見どころ 3 -->
+                <div class="feature-card">
+                    <div class="card-icon"><i class="fa-solid fa-utensils"></i></div>
+                    <h3 class="card-title">FOOD STREET</h3>
+                    <p class="card-desc">
+                        熱気あふれる会場をさらに盛り上げるスタミナグルメや、大人気のキッチンカーがエリアに集結。五感すべてを満たします。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 統計 ＆ ボルテージ連打メーター -->
+    <section id="stats">
+        <div class="container">
+            <div class="stats-wrapper">
+                <div class="stat-item">
+                    <div class="stat-num">200+</div>
+                    <div class="stat-label">Performers</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-num">30+</div>
+                    <div class="stat-label">Gourmet Booths</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-num">100k+</div>
+                    <div class="stat-label">Total Visitors</div>
+                </div>
+            </div>
+
+            <!-- みんなで連打！ボルテージメーター -->
+            <div class="excitement-meter-box">
+                <div class="meter-title">
+                    <i class="fa-solid fa-fire"></i>
+                    <span>みんなの熱気ボルテージ</span>
+                </div>
+                <div class="meter-bar-outer">
+                    <div class="meter-bar-inner" id="meter-bar"></div>
+                    <span class="meter-percentage" id="meter-text">45%</span>
+                </div>
+                <button class="btn btn-primary" id="cheer-btn" style="padding: 12px 30px; font-size: 15px;">
+                    <i class="fa-solid fa-heart" style="margin-right: 8px;"></i>熱気をおくる（連打！）
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- タイムテーブルセクション -->
+    <section id="schedule">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Timetable</span>
+                <h2 class="section-title">ステージ<span>スケジュール</span></h2>
+            </div>
+
+            <!-- ステージ別タブ切り替え -->
+            <div class="tabs-container">
+                <button class="tab-btn active" data-target="main-stage">メインステージ (小松駅前)</button>
+                <button class="tab-btn" data-target="sub-stage">サブステージ (れんが通り)</button>
+            </div>
+
+            <!-- メインステージタイムテーブル -->
+            <div class="timetable-pane active" id="main-stage">
+                <table class="timetable">
+                    <tbody>
+                        <tr>
+                            <td>13:00 -</td>
+                            <td>
+                                <div class="stage-title-item">オープニング和太鼓セッション</div>
+                                <div class="stage-desc-item">地元の伝統と熱量が交わる開幕の響き。お腹の底から祭りの始まりを告げる大迫力演奏。</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>16:30 -</td>
+                            <td>
+                                <div class="stage-title-item">スペシャルゲスト LIVEステージ</div>
+                                <div class="stage-desc-item">話題のダンスボーカルグループによる圧巻のパフォーマンス。会場のボルテージを最高潮へ。</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>19:00 -</td>
+                            <td>
+                                <div class="stage-title-item">グランドフィナーレ・DJ DONDON</div>
+                                <div class="stage-desc-item">光・音・観客の歓声が完全融合する奇跡のノンストップアワー。みんなで最高の瞬間を共有しよう。</div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- サブステージタイムテーブル -->
+            <div class="timetable-pane" id="sub-stage">
+                <table class="timetable">
+                    <tbody>
+                        <tr>
+                            <td>13:30 -</td>
+                            <td>
+                                <div class="stage-title-item">ストリートダンスショーケース</div>
+                                <div class="stage-desc-item">近隣の精鋭ダンススクールやキッズダンサーたちによる弾けるパフォーマンス。</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>15:30 -</td>
+                            <td>
+                                <div class="stage-title-item">市民総踊り・輪踊りレクチャー</div>
+                                <div class="stage-desc-item">観客、観光客、誰でも大歓迎！お囃子に合わせて楽しくステップを学んで一緒に輪に加わりましょう。</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>18:30 -</td>
+                            <td>
+                                <div class="stage-title-item">あんどん行列大競演</div>
+                                <div class="stage-desc-item">夜空を鮮やかに焦がすあんどんがれんが通りに大集結。荘厳かつエネルギッシュなフィナーレ。</div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- クチコミ & フィード風ギャラリー -->
+    <section id="gallery">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Social Feedback</span>
+                <h2 class="section-title"><span>#こまつどんどん</span>の熱狂</h2>
+            </div>
+
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="images/20251011_182133.JPG" alt="どんどん祭り観客">
+                    <div class="gallery-overlay">
+                        <p class="gallery-text">「駅前ステージの音がヤバすぎて鳥肌立った！今年もどんどん祭り最高に楽しい〜〜🙌🎉」</p>
+                        <p class="gallery-user">@live_junkie_km</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/20251011_190529.JPG" alt="ステージダンス">
+                    <div class="gallery-overlay">
+                        <p class="gallery-text">「ダンスコンテストみんなカッコよすぎ！ライトアップされた時の盛り上がり異常🔥」</p>
+                        <p class="gallery-user">@dancemania_komatsu</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/20251011_192227.JPG" alt="あんどん">
+                    <div class="gallery-overlay">
+                        <p class="gallery-text">「伝統的なあんどんの灯りと爆音ミュージックが交わる瞬間がマジでエモすぎる…😭」</p>
+                        <p class="gallery-user">@cultural_vibe</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/20251011_192426.JPG" alt="フード">
+                    <div class="gallery-overlay">
+                        <p class="gallery-text">「キッチンカーで小松塩焼きそばをゲット！食べながら観るライブステージ最高の一言！」</p>
+                        <p class="gallery-user">@gourmet_traveler</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/20251011_192955.JPG" alt="熱狂のステージ">
+                    <div class="gallery-overlay">
+                        <p class="gallery-text">「みんなでペンライト振って一体感が凄かった！来年も絶対来る！」</p>
+                        <p class="gallery-user">@fes_lover2026</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/20251011_193723.JPG" alt="パフォーマンス">
+                    <div class="gallery-overlay">
+                        <p class="gallery-text">「夜が深まるにつれてボルテージが上がって最高潮に！！」</p>
+                        <p class="gallery-user">@night_owl</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/20251011_193821.JPG" alt="フィナーレ">
+                    <div class="gallery-overlay">
+                        <p class="gallery-text">「圧倒的な光の演出！写真じゃ伝わりきらないこの凄さ！」</p>
+                        <p class="gallery-user">@photo_master</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/20251011_203234.JPG" alt="熱気">
+                    <div class="gallery-overlay">
+                        <p class="gallery-text">「最後のDJプレイ、みんなでジャンプして文字通り地面が揺れた！」</p>
+                        <p class="gallery-user">@jump_jump_up</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/20251011_183008.JPG" alt="夕暮れの祭り">
+                    <div class="gallery-overlay">
+                        <p class="gallery-text">「夕暮れ時の雰囲気もたまらない。美味しいもの食べて大満足。」</p>
+                        <p class="gallery-user">@sunset_vibe</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/20251011_191841.JPG" alt="興奮">
+                    <div class="gallery-overlay">
+                        <p class="gallery-text">「友達と最前列で参戦！最高すぎた！」</p>
+                        <p class="gallery-user">@front_row_crew</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/20251011_113503.JPG" alt="昼の部">
+                    <div class="gallery-overlay">
+                        <p class="gallery-text">「昼間のダンスショーケースも熱気すごかった！」</p>
+                        <p class="gallery-user">@daytime_dancer</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/20251011_114225.JPG" alt="イベント賑わい">
+                    <div class="gallery-overlay">
+                        <p class="gallery-text">「子供から大人までみんなニコニコでホント良いお祭り☺️」</p>
+                        <p class="gallery-user">@komatsu_family</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- モチベーションを高めるCTA -->
+    <section id="cta-block">
+        <div class="container cta-box">
+            <i class="fa-solid fa-quote-left"></i>
+            <h2>この鼓動、この興奮。<br>小松の夜に、あなた自身の熱を刻め。</h2>
+            <a href="#schedule" class="btn btn-primary"><i class="fa-solid fa-ticket-simple" style="margin-right: 8px;"></i>イベント情報を保存する</a>
+        </div>
+    </section>
+
+    <!-- フッター・インフォメーション -->
+    <footer id="access">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-info">
+                    <h3>こまつ<span>どんどん</span>祭り</h3>
+                    <ul class="footer-details">
+                        <li><i class="fa-solid fa-location-dot"></i> 会場：石川県小松市 JR小松駅周辺特設会場（市民公園・れんが通り）</li>
+                        <li><i class="fa-solid fa-calendar"></i> 開催日時：2026年 8月開催予定</li>
+                        <li><i class="fa-solid fa-globe"></i> 公式サイト：www.komatsu-dondon.com</li>
+                    </ul>
+                </div>
+                <div class="footer-socials">
+                    <a href="#" class="social-icon"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="social-icon"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="#" class="social-icon"><i class="fa-brands fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2026 こまつどんどん祭り実行委員会. All Rights Reserved. Created based on your live music vibe concept.
+            </div>
+        </div>
+    </footer>
+
+    <!-- インタラクティブJavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            // -----------------------------------------
+            // 1. リアルタイムカウントダウン (2026年8月中旬をターゲットに設定)
+            // -----------------------------------------
+            const targetDate = new Date('August 15, 2026 13:00:00').getTime();
+
+            function updateCountdown() {
+                const now = new Date().getTime();
+                const difference = targetDate - now;
+
+                if (difference <= 0) {
+                    document.getElementById('days').innerText = '00';
+                    document.getElementById('hours').innerText = '00';
+                    document.getElementById('minutes').innerText = '00';
+                    document.getElementById('seconds').innerText = '00';
+                    return;
+                }
+
+                const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+                document.getElementById('days').innerText = String(days).padStart(2, '0');
+                document.getElementById('hours').innerText = String(hours).padStart(2, '0');
+                document.getElementById('minutes').innerText = String(minutes).padStart(2, '0');
+                document.getElementById('seconds').innerText = String(seconds).padStart(2, '0');
+            }
+
+            setInterval(updateCountdown, 1000);
+            updateCountdown();
+
+            // -----------------------------------------
+            // 2. バーチャルペンライト体験
+            // -----------------------------------------
+            const glowStick = document.getElementById('glow-stick');
+            const glowLayer = document.getElementById('glow-layer');
+            const colorDots = document.querySelectorAll('.color-dot');
+            const waveButton = document.getElementById('wave-button');
+
+            // 色変更処理
+            colorDots.forEach(dot => {
+                dot.addEventListener('click', function() {
+                    colorDots.forEach(d => d.classList.remove('active'));
+                    this.classList.add('active');
+
+                    const color = this.getAttribute('data-color');
+                    
+                    // ペンライト自体のカラーと影を変更
+                    glowStick.style.boxShadow = `0 0 40px ${color}`;
+                    // 背景のぼんやりした光も同調
+                    glowLayer.style.background = `radial-gradient(circle at center, ${color}33 0%, transparent 70%)`;
+                });
+            });
+
+            // 手動ウェーブ（ボタンクリック時）
+            waveButton.addEventListener('click', function() {
+                glowStick.style.transform = 'rotate(-40deg)';
+                setTimeout(() => {
+                    glowStick.style.transform = 'rotate(40deg)';
+                }, 150);
+                setTimeout(() => {
+                    glowStick.style.transform = '';
+                }, 300);
+
+                // メーターも連動して少し増える演出
+                increaseVoltage(2);
+            });
+
+            // アリーナボックスのエリアをホバー＆スワイプ（マウス移動）したときにも振れるギミック
+            const arenaBox = document.getElementById('arena-box');
+            arenaBox.addEventListener('mousemove', function(e) {
+                const width = arenaBox.offsetWidth;
+                const rect = arenaBox.getBoundingClientRect();
+                const mouseX = e.clientX - rect.left;
+                
+                // マウス位置（0.0〜1.0）に応じた角度を計算
+                const ratio = mouseX / width;
+                const angle = (ratio - 0.5) * 60; // -30度から30度
+                
+                // アニメーションを一時停止してマウスに追従
+                glowStick.style.animation = 'none';
+                glowStick.style.transform = `rotate(${angle}deg)`;
+            });
+
+            arenaBox.addEventListener('mouseleave', function() {
+                // マウスが外れたら元のなめらかなウェーブアニメーションに戻す
+                glowStick.style.animation = 'waveStick 2s ease-in-out infinite alternate';
+            });
+
+            // タッチ操作（スマートフォン対応）
+            arenaBox.addEventListener('touchmove', function(e) {
+                if(e.touches.length > 0) {
+                    const rect = arenaBox.getBoundingClientRect();
+                    const touchX = e.touches[0].clientX - rect.left;
+                    const ratio = touchX / arenaBox.offsetWidth;
+                    const angle = (ratio - 0.5) * 60;
+                    glowStick.style.animation = 'none';
+                    glowStick.style.transform = `rotate(${angle}deg)`;
+                }
+            }, { passive: true });
+
+            arenaBox.addEventListener('touchend', function() {
+                glowStick.style.animation = 'waveStick 2s ease-in-out infinite alternate';
+            }, { passive: true });
+
+
+            // -----------------------------------------
+            // 3. 熱気（ボルテージ）メーター機能
+            // -----------------------------------------
+            const cheerBtn = document.getElementById('cheer-btn');
+            const meterBar = document.getElementById('meter-bar');
+            const meterText = document.getElementById('meter-text');
+            let currentVoltage = 45; // 初期値
+
+            function increaseVoltage(amount) {
+                currentVoltage = Math.min(currentVoltage + amount, 100);
+                meterBar.style.width = currentVoltage + '%';
+                meterText.innerText = currentVoltage + '%';
+
+                // ボルテージ100%達成時のちょっとしたカラー変化
+                if (currentVoltage >= 100) {
+                    meterBar.style.background = 'linear-gradient(90deg, #00f2fe, #ff2a5f)';
+                    meterText.innerText = 'MAX HEAT! 🔥';
+                }
+            }
+
+            cheerBtn.addEventListener('click', function() {
+                increaseVoltage(5);
+                // クリック時のハートエフェクト生成
+                createHeart(cheerBtn);
+            });
+
+            function createHeart(button) {
+                const heart = document.createElement('i');
+                heart.className = 'fa-solid fa-heart';
+                heart.style.position = 'absolute';
+                heart.style.color = '#ff2a5f';
+                heart.style.fontSize = '20px';
+                heart.style.pointerEvents = 'none';
+                
+                const rect = button.getBoundingClientRect();
+                heart.style.left = (Math.random() * rect.width) + 'px';
+                heart.style.top = '0px';
+                
+                button.appendChild(heart);
+
+                // 上昇して消えるアニメーション
+                let top = 0;
+                let opacity = 1;
+                const anim = setInterval(() => {
+                    top -= 3;
+                    opacity -= 0.05;
+                    heart.style.transform = `translateY(${top}px)`;
+                    heart.style.opacity = opacity;
+                    
+                    if (opacity <= 0) {
+                        clearInterval(anim);
+                        heart.remove();
+                    }
+                }, 30);
+            }
+
+
+            // -----------------------------------------
+            // 4. インタラクティブ・スケジュール切り替え
+            // -----------------------------------------
+            const tabBtns = document.querySelectorAll('.tab-btn');
+            const panes = document.querySelectorAll('.timetable-pane');
+
+            tabBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    tabBtns.forEach(b => b.classList.remove('active'));
+                    panes.forEach(p => p.classList.remove('active'));
+
+                    this.classList.add('active');
+                    const targetId = this.getAttribute('data-target');
+                    document.getElementById(targetId).classList.add('active');
+                });
+            });
+
+
+            // -----------------------------------------
+            // 5. プレイボタン演出 (画像ズーム)
+            // -----------------------------------------
+            const playBtn = document.getElementById('play-btn');
+            const conceptImg = document.getElementById('concept-img');
+
+            playBtn.addEventListener('click', function() {
+                // 今回はダミー再生。クリックすると画像がフラッシュしてちょっとズーム
+                conceptImg.style.filter = 'brightness(1.5)';
+                setTimeout(() => {
+                    conceptImg.style.filter = 'brightness(0.85)';
+                }, 200);
+            });
+
+        });
+    </script>
+
+</body>
+</html>
